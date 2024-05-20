@@ -18,7 +18,6 @@ const createRow = (rowIndex: number) => {
   const boxesGroup = new THREE.Group()
 
   const boxes = ARRAY_OF_128.map((_, index) => {
-    const random = new THREE.MeshLambertMaterial({ color: Math.random() * 0xffffff })
     const box = new THREE.Mesh(BOX_GEOMETRY, INVISIBLE_MESH)
     const xPosition = rowIndex + 0.5 - N128 / 2
     const zPosition = index + 0.5 - N128 / 2
@@ -57,10 +56,6 @@ export const createBase = () => {
 
 export const BASE_GRID = (() => {
   const base = createBase()
-
-  console.log({ base })
-
-  const d = throttle((name, mainIntersect) => console.log(name, mainIntersect), 1000)
 
   const deactivateBaseBox = (baseBox: THREE.Intersection) => {
     const mesh = baseBox.object as THREE.Mesh
